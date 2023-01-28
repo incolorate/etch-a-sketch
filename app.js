@@ -1,18 +1,33 @@
+let SMALL = 16; 
+
 let gameBoard = document.querySelector(".board");
-
-let smallButton = document.querySelector(".small");
 let buttons = document.querySelectorAll(".buttons");
-
-let gameStarted = false;
 
 function insertPixel(n) {
   // Create rows/column
   gameBoard.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
   gameBoard.style.gridTemplateRows = `repeat(${n}, 1fr)`;
+
   for (i = 0; i < n * n; i++) {
     let pixel = document.createElement("div");
     gameBoard.appendChild(pixel);
     pixel.classList.add("pixel");
+    pixel.addEventListener("mouseover", addColor)
+  }
+}
+
+
+// Check if mouse is clicked
+let mouseClicked = false
+function mouseUpdate () {
+  mouseClicked = !mouseClicked
+}
+document.addEventListener("mousedown", mouseUpdate)
+document.addEventListener("mouseup", mouseUpdate)
+
+function addColor () {
+  if (mouseClicked) {
+  this.classList.add("red")
   }
 }
 // First delete the current board -> init new board
@@ -23,12 +38,5 @@ buttons.forEach((button) => {
   });
 });
 
-//On load the board size is 16x16
-document.addEventListener("load", insertPixel(16));
 
-gamePixels.forEach((pixel) => {
-  pixel.addEventListener("mouseover", () => {
-    console.log(pixel);
-    pixel.style.backgroundColor = "red";
-  });
-});
+document.addEventListener("load", insertPixel(SMALL));
