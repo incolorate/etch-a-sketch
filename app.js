@@ -12,14 +12,23 @@ function insertPixel(n) {
   for (i = 0; i < n * n; i++) {
     let pixel = document.createElement("div");
     gameBoard.appendChild(pixel);
-    pixel.classList.add("red");
+    pixel.classList.add("pixel");
   }
 }
-
 // First delete the current board -> init new board
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     gameBoard.innerHTML = "";
     insertPixel(button.value);
+  });
+});
+
+//On load the board size is 16x16
+document.addEventListener("load", insertPixel(16));
+
+gamePixels.forEach((pixel) => {
+  pixel.addEventListener("mouseover", () => {
+    console.log(pixel);
+    pixel.style.backgroundColor = "red";
   });
 });
