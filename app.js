@@ -1,10 +1,25 @@
 let gameBoard = document.querySelector(".board");
-let pixel = document.createElement("div");
 
-let gameSizeSmall = document.querySelector(".small");
+let smallButton = document.querySelector(".small");
+let buttons = document.querySelectorAll(".buttons");
 
-function insertPixel() {
-  gameBoard.appendChild(pixel);
+let gameStarted = false;
+
+function insertPixel(n) {
+  // Create rows/column
+  gameBoard.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+  gameBoard.style.gridTemplateRows = `repeat(${n}, 1fr)`;
+  for (i = 0; i < n * n; i++) {
+    let pixel = document.createElement("div");
+    gameBoard.appendChild(pixel);
+    pixel.classList.add("red");
+  }
 }
 
-gameSizeSmall.addEventListener("click", createBoard);
+// First delete the current board -> init new board
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    gameBoard.innerHTML = "";
+    insertPixel(button.value);
+  });
+});

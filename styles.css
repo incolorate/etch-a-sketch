@@ -16,10 +16,18 @@ body {
   width: 350px;
   background-color: aliceblue;
   height: 350px;
+  margin: 0 auto;
 }
 
 .board {
   width: 350px;
   background-color: aliceblue;
   height: 350px;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+}
+
+.red {
+  background-color: red;
 }
