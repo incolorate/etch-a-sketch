@@ -58,8 +58,10 @@ function whatColor() {
 }
 
 function addColor() {
-  whatColor();
-  this.style.backgroundColor = currentColor;
+  if (mouseClicked) {
+    whatColor();
+    this.style.backgroundColor = currentColor;
+  }
 }
 
 // On load init small board
