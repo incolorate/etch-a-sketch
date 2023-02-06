@@ -11,12 +11,23 @@
     <div>
       <h1 class="title">Etch-a-sketch</h1>
     </div>
-    <div class="game-container">
-      <div class="board"></div>
-      <button class="small buttons" value="16">16x16</button>
-      <button class="medium buttons" value="32">32x32</button>
-      <button class="large buttons" value="64">64x64</button>
+    <div class="divider"></div>
+
+    <div class="container">
+      <div class="game-container drop-shadow">
+        <div class="board"></div>
+      </div>
+
+      <h2 class="size">Board size</h2>
+      <div class="button-container">
+        <button class="small buttons" value="16">16x16</button>
+        <button class="medium buttons" value="32">32x32</button>
+        <button class="large buttons" value="64">64x64</button>
+      </div>
+      <h2 class="color-text">Color</h2>
+      <input type="color" class="color buttons" />
     </div>
+
     <script src="./app.js"></script>
   </body>
 </html>
