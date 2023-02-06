@@ -82,8 +82,30 @@ body {
   color: #e4e4e7;
   font-size: 50px;
   grid-area: d;
+  margin-bottom: 0px;
 }
-.color {
+
+.color-pick {
   grid-area: e;
-  margin: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.random {
+  font-size: 30px;
+  margin: 10px;
+  background-color: #27272a;
+  border: #a1a1aa 1px solid;
+  font-size: xx-large;
+  color: #e4e4e7;
+}
+
+.pick {
+  width: 150px;
+  margin: 20px;
+  height: 50px;
+  border: 0px;
+  background-color: #27272a;
 }
