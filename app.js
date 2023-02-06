@@ -16,8 +16,6 @@ function insertPixel(n) {
   }
 }
 
-function coloring() {}
-
 // Check if mouse is clicked
 let mouseClicked = false;
 function mouseUpdate() {
@@ -34,13 +32,35 @@ buttons.forEach((button) => {
   });
 });
 
-document.addEventListener("load", insertPixel(SMALL));
-
 let colorPick = document.querySelector(".color");
+let random = document.querySelector(".random");
 
-function addColor() {
-  color = colorPick.value;
-  if (mouseClicked) {
-    this.style.backgroundColor = color;
+let mode = "color";
+let currentColor;
+
+random.addEventListener("click", () => {
+  mode = "random";
+});
+
+colorPick.addEventListener("click", () => {
+  mode = "color";
+});
+
+function whatColor() {
+  if (mode === "random") {
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+    currentColor = `rgb(${R}, ${G}, ${B})`;
+  } else if (mode === "color") {
+    currentColor = colorPick.value;
   }
 }
+
+function addColor() {
+  whatColor();
+  this.style.backgroundColor = currentColor;
+}
+
+// On load init small board
+document.addEventListener("load", insertPixel(SMALL));
